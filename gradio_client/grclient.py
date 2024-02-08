@@ -14,7 +14,6 @@ from pathlib import Path
 from typing import Callable, Generator, Any, Union, List
 import ast
 from packaging import version
-from urllib.parse import urlparse
 
 os.environ["HF_HUB_DISABLE_TELEMETRY"] = "1"
 
@@ -137,7 +136,7 @@ class GradioClient(Client):
             self.output_dir = output_dir
         self.max_workers = max_workers
 
-        parsed = urlparse(src)
+        parsed = urllib.parse.urlparse(src)
         self.src = parsed.geturl()
 
         if parsed.username:
