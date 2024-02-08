@@ -18,7 +18,7 @@ setuptools.setup(
     license="Apache License 2.0",
     packages=["gradio_client"],
     data_files=[
-        ('types', ['types.json']),
+        ("types", ["gradio_client/types.json"]),
     ],
     install_requires=[
         "fsspec",
