@@ -24,6 +24,6 @@ setuptools.setup(
         "packaging",
         "requests~=2.0",
         "typing_extensions~=4.0",
-        "websockets>=10.0,<12.0]",
+        "websockets>=10.0,<12.0",
     ]
 )
