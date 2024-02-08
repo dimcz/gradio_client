@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Callable, Generator, Any, Union, List
 import ast
 from packaging import version
+from urllib.parse import urlparse
 
 os.environ["HF_HUB_DISABLE_TELEMETRY"] = "1"
 
@@ -135,8 +136,15 @@ class GradioClient(Client):
         else:
             self.output_dir = output_dir
         self.max_workers = max_workers
-        self.src = src
-        self.auth = auth
+
+        parsed = urlparse(src)
+        self.src = parsed.geturl()
+
+        if parsed.username:
+            self.auth = (parsed.username, parsed.password)
+        else:
+            self.auth = auth
+
         self.config = None
         self.h2ogpt_key = h2ogpt_key
         self.persist = persist
